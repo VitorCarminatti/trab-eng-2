@@ -3,6 +3,7 @@
 <div class="container">
   <%= simple_form_for :user do |f| %>
     <%= f.input :nome %>
-    <%= f.submit 'Salvar', class: 'btn btn-info' %>
   <% end %>
+
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-block' %>
 </div>
