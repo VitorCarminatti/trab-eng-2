@@ -3,10 +3,11 @@ class Product < ApplicationRecord
 
 
 	def price
-  		if self.has_promotion
-  			self.promotional_price
+  		byebug
+  		if has_promotion
+  			promotional_price
   		else
-  			self.price
+  			price
   		end
   	end
 end
