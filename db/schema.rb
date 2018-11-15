@@ -10,28 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_04_234333) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_13_222501) do
+>>>>>>> 1403ac7c5f1632250ede9a4fec1f2536d37a3ef4
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
-    t.string "nome"
-    t.integer "ativo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "codigo_marca"
-    t.string "nome"
-    t.integer "quantidade"
-    t.decimal "preco"
-    t.boolean "em_promocao"
-    t.decimal "preco_promocional"
-    t.text "descricao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "brand_id"
+    t.string "name"
+    t.integer "quantity"
+    t.decimal "price"
+    t.boolean "has_promotion"
+    t.decimal "promotional_price"
+    t.text "descripion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +50,5 @@ ActiveRecord::Schema.define(version: 2018_11_04_234333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brands", "products"
 end
