@@ -1,0 +1,51 @@
+<div class="cart_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				<div class="cart_container">
+					<div class="cart_title">Carrinho</div>
+					<div class="cart_items">
+						<ul class="cart_list">
+						<% @cart_items.each do |item| %>
+							<% product = Product.where(:id => item.product_id).first %>
+							<li class="cart_item clearfix">
+								<div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
+								<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+									<div class="cart_item_name cart_info_col">
+										<div class="cart_item_title">Nome</div>
+										<div class="cart_item_text"><%= product.name %></div>
+									</div>
+									<div class="cart_item_quantity cart_info_col">
+										<div class="cart_item_title">Quantidade</div>
+										<div class="cart_item_text"><%= item.quantity %></div>
+									</div>
+									<div class="cart_item_price cart_info_col">
+										<div class="cart_item_title">Unidade</div>
+										<div class="cart_item_text"><%= number_to_currency(product.get_price, unit: "R$", separator: ",", delimiter: ".") %></div>
+									</div>
+									<div class="cart_item_total cart_info_col">
+										<div class="cart_item_title">Total</div>
+										<div class="cart_item_text"><%= number_to_currency(product.get_price * item.quantity, unit: "R$", separator: ",", delimiter: ".") %></div>
+									</div>
+								</div>
+							</li>
+						<% end %>
+						</ul>
+					</div>
+					
+					<div class="order_total">
+						<div class="order_total_content text-md-right">
+							<div class="order_total_title">Total:</div>
+							<div class="order_total_amount"><%= number_to_currency(total_price, unit: "R$", separator: ",", delimiter: ".") %></div>
+						</div>
+					</div>
+
+					<div class="cart_buttons">
+						<button type="button" class="button cart_button_clear">Continuar Comprando</button>
+						<button type="button" class="button cart_button_checkout">Finalizar Compra</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

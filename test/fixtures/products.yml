@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo_marca: 1
+  nome: MyString
+  quantidade: 1
+  preco: 9.99
+  em_promocao: false
+  preco_promocional: 9.99
+  descricao: MyText
+
+two:
+  codigo_marca: 1
+  nome: MyString
+  quantidade: 1
+  preco: 9.99
+  em_promocao: false
+  preco_promocional: 9.99
+  descricao: MyText
