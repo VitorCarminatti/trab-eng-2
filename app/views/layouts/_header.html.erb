@@ -55,11 +55,11 @@
 							<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 								<div class="cart_icon">
 									<%= image_tag("cart.png") %>
-									<div class="cart_count"><span>0</span></div>
+									<div class="cart_count"><span><%= total_itens %></span></div>
 								</div>
 								<div class="cart_content">
-									<div class="cart_text"><a href="#">Carrinho</a></div>
-									<div class="cart_price">R$0</div>
+									<div class="cart_text"><a href="/carrinho">Carrinho</a></div>
+									<div class="cart_price"><%= number_to_currency(total_price, unit: "R$", separator: ",", delimiter: ".") %></div>
 								</div>
 							</div>
 						</div>

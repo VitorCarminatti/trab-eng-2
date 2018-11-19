@@ -1,7 +1,7 @@
 class CartController < ApplicationController
 
   	def show
-  		@cart_items = Cart.all
+  		@cart_items = Cart.where(:session_id => session.id)
   	end
 
   	def add_to_cart

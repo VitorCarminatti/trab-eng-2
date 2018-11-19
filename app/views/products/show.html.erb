@@ -38,7 +38,7 @@
 
 								</div>
 
-								<div class="product_price">R$<%= @product.price %></div>
+								<div class="product_price"><%= number_to_currency(@product.get_price, unit: "R$", separator: ",", delimiter: ".") %></div>
 								<div class="button_container">
 									<button type="button" class="button cart_button">Adicionar ao Carrinho</button>
 									<div class="product_fav"><i class="fa fa-heart"></i></div>
