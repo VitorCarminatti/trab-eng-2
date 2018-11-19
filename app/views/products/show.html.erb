@@ -21,7 +21,7 @@
 						<div class="product_category"><%= @product.brand.name %></div>
 						<div class="product_name"><%= @product.name %></div>
 						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="product_text"><p><%= @product.description %></p></div>
+						<div class="product_text"><p><%= @product.descripion %></p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
 								<div class="clearfix" style="z-index: 1000;">
@@ -37,7 +37,7 @@
 
 								</div>
 
-								<div class="product_price">R$<%= @product.price %></div>
+								<div class="product_price">R$<%= @product.has_promotional_price %></div>
 								<div class="button_container">
 									<button type="button" class="button cart_button">Adicionar ao Carrinho</button>
 									<div class="product_fav"><i class="fa fa-heart"></i></div>
