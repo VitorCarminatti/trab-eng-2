@@ -24,11 +24,12 @@
 						<div class="product_text"><p><%= @product.descripion %></p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
+								<input type="hidden" name="product_id" value="<%= @product.id %>">
 								<div class="clearfix" style="z-index: 1000;">
 
 									<div class="product_quantity clearfix">
 										<span>Quantidade: </span>
-										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+										<input id="quantity_input" type="text" pattern="[0-9]*" value="1" maxlength="<%= @product.quantity - @product.quantity_in_cart(session.id) %>">
 										<div class="quantity_buttons">
 											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up"></i></div>
 											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down"></i></div>
@@ -37,12 +38,12 @@
 
 								</div>
 
-								<div class="product_price">R$<%= @product.has_promotional_price %></div>
+								<div class="product_price"><%= number_to_currency(@product.get_price, unit: "R$", separator: ",", delimiter: ".") %></div>
 								<div class="button_container">
 									<button type="button" class="button cart_button">Adicionar ao Carrinho</button>
 									<div class="product_fav"><i class="fa fa-heart"></i></div>
 								</div>
-								
+
 							</form>
 						</div>
 					</div>
@@ -61,7 +62,7 @@
 					<div class="brands_slider_container">
 
 						<div class="owl-carousel owl-theme brands_slider">
-							
+
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_1.jpg") %></div></div>
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_2.jpg") %></div></div>
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_3.jpg") %></div></div>
@@ -72,7 +73,7 @@
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_8.jpg") %></div></div>
 
 						</div>
-						
+
 						<div class="brands_nav brands_prev"><i class="fa fa-chevron-left"></i></div>
 						<div class="brands_nav brands_next"><i class="fa fa-chevron-right"></i></div>
 
