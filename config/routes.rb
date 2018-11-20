@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   post 'cart/add_to_cart'
 
   get 'brands/index'
+
   get 'products/index'
   get '/produto/:id/(:slug)', to: 'products#show', as: 'produto'
   devise_for :users
   root 'home#index'
+
+  get 'pagamento', to: 'orders#show', as: 'pagamento'
 end
