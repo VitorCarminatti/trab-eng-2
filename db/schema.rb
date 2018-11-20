@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_062801) do
+ActiveRecord::Schema.define(version: 2018_11_20_012641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
+  
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.integer "active"
     t.datetime "created_at"
     t.datetime "updated_at", precision: 4
-    t.bigint "product_id"
     t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
@@ -32,8 +31,25 @@ ActiveRecord::Schema.define(version: 2018_11_15_062801) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_categories_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "payment_type_id"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "brand_id"
+    t.integer "category_id"
     t.string "name"
     t.integer "quantity"
     t.decimal "price"
@@ -55,4 +71,5 @@ ActiveRecord::Schema.define(version: 2018_11_15_062801) do
   end
 
   add_foreign_key "brands", "products"
+  add_foreign_key "categories", "products"
 end

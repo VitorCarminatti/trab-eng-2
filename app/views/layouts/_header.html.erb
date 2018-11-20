@@ -6,8 +6,13 @@
 					<div class="top_bar_content ml-auto">
 						<div class="top_bar_user">
 							<div class="user_icon"><%= image_tag("user.svg") %></div>
-							<div><a href="#">Cadastre-se</a></div>
-							<div><a href="#">Login</a></div>
+							<% if user_signed_in? %>
+								<div><a>Logado como <%= current_user.email %></a></div>
+								<div><%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></div>
+							<% else %>
+								<div><a href="/cadastro">Cadastre-se</a></div>
+								<div><a href="/login">Login</a></div>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -87,20 +92,9 @@
 							</div>
 
 							<ul class="cat_menu">
-								<li><a href="#">Teste Categoria 1<i class="fa fa-chevron-right ml-auto"></i></a></li>
-								<li class="hassubs">
-									<a href="#">Teste Categoria 2<i class="fa fa-chevron-right"></i></a>
-									<ul>
-										<li class="hassubs">
-											<a href="#">Teste Subcategoria 1<i class="fa fa-chevron-right"></i></a>
-											<ul>
-												<li><a href="#">Teste Subsubcategoria 1<i class="fa fa-chevron-right"></i></a></li>
-												<li><a href="#">Teste Subsubcategoria 2<i class="fa fa-chevron-right"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Teste Subcategoria 2<i class="fa fa-chevron-right"></i></a></li>
-									</ul>
-								</li>
+								<% @categories.each do |cat| %>
+									<li><a href="/categoria/<%= cat.id %>/<%= cat.name.parameterize %>"><%= cat.name %><i class="fa fa-chevron-right ml-auto"></i></a></li>
+								<% end %>
 							</ul>
 						</div>
 

@@ -9,7 +9,7 @@
 						<% @cart_items.each do |item| %>
 							<% product = Product.where(:id => item.product_id).first %>
 							<li class="cart_item clearfix">
-								<div class="cart_item_image"><img src="images/shopping_cart.jpg" alt=""></div>
+								<div class="cart_item_image"><img src="<%= image_url('single_4.jpg') %>" alt=""></div>
 								<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 									<div class="cart_item_name cart_info_col">
 										<div class="cart_item_title">Nome</div>
@@ -41,8 +41,8 @@
 					</div>
 
 					<div class="cart_buttons">
-						<button type="button" class="button cart_button_clear">Continuar Comprando</button>
-						<button type="button" class="button cart_button_checkout">Finalizar Compra</button>
+						<button type="button" class="button cart_button_clear"><a style="padding: 0; color: inherit;" href="/">Continuar Comprando</a></button>
+						<button type="button" class="button cart_button_checkout"><a style="padding: 0;" href="/pagamento">Finalizar Compra</a></button>
 					</div>
 				</div>
 			</div>
