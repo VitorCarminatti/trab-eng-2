@@ -21,7 +21,7 @@
 						<div class="product_category"><%= @product.brand.name %></div>
 						<div class="product_name"><%= @product.name %></div>
 						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="product_text"><p><%= @product.description %></p></div>
+						<div class="product_text"><p><%= @product.descripion %></p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
 								<input type="hidden" name="product_id" value="<%= @product.id %>">
@@ -43,7 +43,7 @@
 									<button type="button" class="button cart_button">Adicionar ao Carrinho</button>
 									<div class="product_fav"><i class="fa fa-heart"></i></div>
 								</div>
-								
+
 							</form>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="brands_slider_container">
 
 						<div class="owl-carousel owl-theme brands_slider">
-							
+
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_1.jpg") %></div></div>
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_2.jpg") %></div></div>
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_3.jpg") %></div></div>
@@ -73,7 +73,7 @@
 							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><%= image_tag("brands_8.jpg") %></div></div>
 
 						</div>
-						
+
 						<div class="brands_nav brands_prev"><i class="fa fa-chevron-left"></i></div>
 						<div class="brands_nav brands_next"><i class="fa fa-chevron-right"></i></div>
 

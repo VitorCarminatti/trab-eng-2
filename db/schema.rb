@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_223442) do
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.integer "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "product_id"
     t.index ["product_id"], name: "index_brands_on_product_id"
   end
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2018_11_19_223442) do
     t.decimal "price"
     t.boolean "has_promotion"
     t.decimal "promotional_price"
-    t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text "descripion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

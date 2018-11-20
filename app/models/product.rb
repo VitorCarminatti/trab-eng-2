@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
 	belongs_to :brand
 
-
 	def get_price
   		if has_promotion
   			promotional_price
@@ -19,7 +18,7 @@ class Product < ApplicationRecord
   		else
   			quantity = 0
   		end
-  		
+
   		quantity
   	end
 
