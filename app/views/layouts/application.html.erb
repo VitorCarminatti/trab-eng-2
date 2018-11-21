@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <% if notice %>
+  <% if flash[:notice] %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>
-  <% if alert %>
+  <% if flash[:alert] %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
   <head>

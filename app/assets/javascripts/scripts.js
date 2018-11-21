@@ -8,7 +8,7 @@ $(document).ready(function()
 
 	setHeader();
 
-	initBrandsSlider();
+	incrment_and_decrement_quantity();
 
 	$(window).on('resize', function()
 	{
@@ -26,41 +26,21 @@ $(document).ready(function()
 	}
 
 
-	function initBrandsSlider()
+	function incrment_and_decrement_quantity()
 	{
-		if($('.brands_slider').length)
-		{
-			var brandsSlider = $('.brands_slider');
+		$('.select-estruturas-lista > div').on('click', function() {
+			var input = $(this).parent().find('.produto_quantidade');
+			var current_value = parseInt($(input).val());
 
-			brandsSlider.owlCarousel(
-			{
-				loop:true,
-				autoplay:true,
-				autoplayTimeout:5000,
-				nav:false,
-				dots:false,
-				autoWidth:true,
-				items:8,
-				margin:42
-			});
-
-			if($('.brands_prev').length)
-			{
-				var prev = $('.brands_prev');
-				prev.on('click', function()
-				{
-					brandsSlider.trigger('prev.owl.carousel');
-				});
+			if($(this).hasClass('less')) {
+				if(current_value - 1 >= 0) {
+					$(input).val(current_value - 1);
+				}
+			} else if($(this).hasClass('plus')) {
+				if(current_value + 1 <= $(input).attr('max')) {
+					$(input).val(current_value + 1);
+				}
 			}
-
-			if($('.brands_next').length)
-			{
-				var next = $('.brands_next');
-				next.on('click', function()
-				{
-					brandsSlider.trigger('next.owl.carousel');
-				});
-			}
-		}
+		})
 	}
 });

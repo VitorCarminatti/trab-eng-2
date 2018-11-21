@@ -15,59 +15,43 @@
 					<div class="pay-tabs">
 						<h2>Selecione a forma de pagamento</h2>
 						  <ul class="resp-tabs-list">
-							  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span><label class="pic1"></label>Credit Card</span></li>
+							  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span><label class="pic1"></label>Cartão de Crédito</span></li>
 							  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span><label class="pic3"></label>Boleto Bancário</span></li>
 						  </ul>	
 					</div>
 					<div class="resp-tabs-container">
 						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 							<div class="payment-info">
-								<h3>Personal Information</h3>
-								<form>
+								<h3 class="pay-title">Informações do Cartão</h3>
+								<form method="POST" action="">
+									<input type="hidden" name="payment_type" value="2">
 									<div class="tab-for">				
-										<h5>EMAIL ADDRESS</h5>
+										<h5>NOME NO CARTÃO</h5>
 											<input type="text" value="">
-										<h5>FIRST NAME</h5>													
-											<input type="text" value="">
-									</div>			
-								</form>
-								<h3 class="pay-title">Credit Card Info</h3>
-								<form>
-									<div class="tab-for">				
-										<h5>NAME ON CARD</h5>
-											<input type="text" value="">
-										<h5>CARD NUMBER</h5>													
+										<h5>NÚMERO</h5>													
 											<input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="">
 									</div>	
 									<div class="transaction">
 										<div class="tab-form-left user-form">
-											<h5>EXPIRATION</h5>
+											<h5>VALIDADE</h5>
 												<ul>
 													<li>
-														<input type="number" class="text_box" type="text" value="6" min="1" />	
+														<input type="number" class="text_box" type="text" value="6" min="1" max="12" />	
 													</li>
 													<li>
-														<input type="number" class="text_box" type="text" value="1988" min="1" />	
+														<input type="number" class="text_box" type="text" value="2018" min="1" />	
 													</li>
 													
 												</ul>
 										</div>
 										<div class="tab-form-right user-form-rt">
-											<h5>CVV NUMBER</h5>													
+											<h5>CÓDIGO DE VERIFICAÇÃO</h5>													
 											<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
 										</div>
 										<div class="clear"></div>
 									</div>
-									<input type="submit" value="SUBMIT">
+									<input type="submit" value="FINALIZAR COMPRA">
 								</form>
-								<div class="single-bottom">
-										<ul>
-											<li>
-												<input type="checkbox"  id="brand" value="">
-												<label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
-											</li>
-										</ul>
-								</div>
 							</div>
 						</div>
 						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
@@ -75,27 +59,14 @@
 								<h3>Boleto Bancário</h3>
 								<div class="login-tab">
 									<div class="user-login">
-										<h2>Login</h2>
-										
-										<form>
-											<input type="text" value="name@email.com" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'name@email.com';}" required="">
-											<input type="password" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}" required="">
-												<div class="user-grids">
-													<div class="user-left">
-														<div class="single-bottom">
-																<ul>
-																	<li>
-																		<input type="checkbox"  id="brand1" value="">
-																		<label for="brand1"><span></span>Remember me?</label>
-																	</li>
-																</ul>
-														</div>
-													</div>
-													<div class="user-right">
-														<input type="submit" value="LOGIN">
-													</div>
-													<div class="clear"></div>
+										<form method="POST" action="">
+											<input type="hidden" name="payment_type" value="1">
+											<div class="user-grids">
+												<div class="user-right">
+													<input type="submit" value="FINALIZAR COMPRA">
 												</div>
+												<div class="clear"></div>
+											</div>
 										</form>
 									</div>
 								</div>

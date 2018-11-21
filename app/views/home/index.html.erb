@@ -1,12 +1,50 @@
 <div class="super_container">
 
-	<div class="brands">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-				</div>
-			</div>
+	<div class="product_panel">
+		<div class="product-grid">
+			<h1>Destaques</h1>
+			<ul>
+				<% @products.each do |product| %>
+					<li class="grid-item prod-<%= product.id %>">
+						<article>
+							<div class="image">
+								<a href="/produto/<%= product.id %>" title="<%= product.name %>">
+									<img src="<%= image_url('single_1.jpg') %>">
+								</a>
+							</div>
+							<a href="/produto/<%= product.id %>" class="title">
+								<h2><%= product.name %></h2>
+							</a>
+							
+							<% if product.has_promotion %>
+								<span class="price">
+									<em>DE <%= number_to_currency(product.price, unit: "R$", separator: ",", delimiter: ".") %></em>
+								</span>
+								<span class="price">
+									<em class="promotional_price">POR <%= number_to_currency(product.get_price, unit: "R$", separator: ",", delimiter: ".") %> (-<%= ((100 - ((product.get_price * 100) / product.price))).round %>%)</em>
+								</span>
+							<% else %>
+								<span class="price">
+									<em><%= number_to_currency(product.price, unit: "R$", separator: ",", delimiter: ".") %></em>
+								</span>
+							<% end %>
+							
+							<div class="add_cart">
+								<form method="POST" action="/cart/add_to_cart">
+									<div class="select-estruturas-lista" method="POST" action="/cart/add_to_cart">
+										<input type="hidden" name="product_id" value="<%= product.id %>">
+
+										<div class="plus">+</div>
+										<input value="1" type="number" id="produto_quantidade_preview" class="produto_quantidade" name="quantity" min="1" max="<%= product.quantity - product.quantity_in_cart(session[:cart_id]) %>">
+										<div class="less">-</div>
+									</div>
+									<button>COMPRAR</button>
+								</form>
+							</div>
+						</article>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 	</div>
 

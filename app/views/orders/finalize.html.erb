@@ -1,0 +1,27 @@
+<div class="main">
+	<div class="content">
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#horizontalTab').easyResponsiveTabs({
+					type: 'default', //Types: default, vertical, accordion           
+					width: 'auto', //auto or any width like 600px
+					fit: true   // 100% fit in a container
+				});
+			});
+			
+		</script>
+		<div class="sap_tabs">
+			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+				<div class="pay-tabs">
+					<%
+						hashids = Hashids.new("test_salt", 8)
+						hash_id = hashids.decode(params[:crypted_id])
+					%>
+
+					<h2>Pedido realizado com sucesso!</h2>
+					<p class="order_id">Código do pedido: <span>#<%= hash_id[0].to_s.rjust(8, '0') %></span></p>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>

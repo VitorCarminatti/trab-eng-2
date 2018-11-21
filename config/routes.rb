@@ -6,10 +6,12 @@ Rails.application.routes.draw do
 
   	get 'products/index'
   	get '/produto/:id/(:slug)', to: 'products#show', as: 'produto'
-  	devise_for :users
+  	devise_for :users, :controllers => { :sessions => "sessions" }
   	root 'home#index'
 
   	get 'pagamento', to: 'orders#show', as: 'pagamento'
+    post 'pagamento', to: 'orders#create', as: 'finalizar_pagamento'
+    get 'pagamento/finalizar/(:crypted_id)', to: 'orders#finalize', as: 'pagamento_finalizado'
 
   	devise_scope :user do
   		get 'login', to: 'devise/sessions#new'

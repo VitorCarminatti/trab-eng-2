@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_012641) do
+ActiveRecord::Schema.define(version: 2018_11_21_003707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.integer "active"
     t.datetime "created_at"
     t.datetime "updated_at", precision: 4
-    t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -36,7 +35,6 @@ ActiveRecord::Schema.define(version: 2018_11_20_012641) do
     t.integer "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_categories_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -47,9 +45,21 @@ ActiveRecord::Schema.define(version: 2018_11_20_012641) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payment_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_orders", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "brand_id"
-    t.integer "category_id"
     t.string "name"
     t.integer "quantity"
     t.decimal "price"
@@ -58,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_012641) do
     t.text "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,6 +81,4 @@ ActiveRecord::Schema.define(version: 2018_11_20_012641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "brands", "products"
-  add_foreign_key "categories", "products"
 end
